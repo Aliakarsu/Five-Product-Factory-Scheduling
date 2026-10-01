@@ -29,7 +29,7 @@ P4 must be at least 5, and producing any P5 incurs a fixed setup cost of 30.
 - `x_p` (integer, >= 0): units of product `p`
 - `y5` (binary): 1 if P5 is produced, which triggers the setup cost
 
-`
+```
 max   5 x1 + 4 x2 + 6 x3 + 7 x4 + 8 x5 - 30 y5
 s.t.  2 x1 + 3 x2 + 1 x3 + 4 x4 + 5 x5 <= 95    (labour)
       3 x1 + 2 x2 + 4 x3 + 1 x4 + 3 x5 <= 80    (machine)
@@ -38,7 +38,7 @@ s.t.  2 x1 + 3 x2 + 1 x3 + 4 x4 + 5 x5 <= 95    (labour)
       x2 + x3 >= 15
       x4 >= 5
       x5 <= 19 y5                               (fixed-charge link, M = floor(95/5))
-`
+```
 
 The big-M value of 19 is the tightest valid bound: P5 alone cannot exceed
 `floor(95 / 5)` units because of the labour limit.
@@ -59,10 +59,10 @@ The big-M value of 19 is the tightest valid bound: P5 alone cannot exceed
 
 ## Run it
 
-`ash
+```bash
 pip install -r requirements.txt
 python factory_optimization.py
-`
+```
 
 The script builds and solves both the LP relaxation and the full MIP, then
 prints the comparison, the rounded-LP check and the resource usage. Problem
